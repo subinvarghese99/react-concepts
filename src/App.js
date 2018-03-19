@@ -6,10 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Alert
-          type="success"
-          message="Sign up successful."
-        />
+        <Alert type="success">
+          <small>small message</small>
+        </Alert>
         <Alert
           type="info"
           message="Database is almost full."
