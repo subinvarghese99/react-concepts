@@ -3,16 +3,19 @@ import React, { Component } from 'react';
 import Alert from './ui-components/Alert';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showAlert: true
+    };
+  }
   render() {
     return (
       <div className="container">
-        <Alert type="success">
+        <Alert type="success" show={this.state.showAlert}>
           <small>small message</small>
         </Alert>
-        <Alert
-          type="info"
-          message="Database is almost full."
-        />
       </div>
     );
   }
