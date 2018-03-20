@@ -27,4 +27,38 @@ Alert.defaultProps = {
   toggleAlert() {}
 };
 
+// a function
+// takes in a component
+// returns a new enhanced component
+
+const withAnimation = (Component) => {
+  const AnimatedComponent = (props) => {
+    return (
+      <div className="wow bounceInUp">
+        <Component {...props} />
+      </div>
+    );
+  };
+
+  return AnimatedComponent;
+};
+// hide an element after showing it for 2 seconds.
+const withDismiss = (Component) => {
+  class DismissableComponent extends React.Component {
+    componentDidMount() {
+      setTimeout(() => {
+        this.props.toggleAlert();
+      }, 2000);
+    }
+    render() {
+      return <Component {...this.props} />;
+    }
+  }
+
+  return DismissableComponent;
+};
+
+export const AnimatedAlert = withAnimation(Alert);
+export const DismissableAlert = withDismiss(AnimatedAlert);
+
 export default Alert;
